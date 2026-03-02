@@ -2095,8 +2095,8 @@ main() {
 
     if [[ -z "$INSTALL_METHOD" && -n "$detected_checkout" ]]; then
         if ! is_promptable; then
-            ui_info "Found OpenClaw checkout but no TTY; defaulting to npm install"
-            INSTALL_METHOD="npm"
+            ui_info "Found OpenClaw checkout but no TTY; defaulting to git install"
+            INSTALL_METHOD="git"
         else
             local selected_method=""
             selected_method="$(choose_install_method_interactive "$detected_checkout" || true)"
@@ -2114,7 +2114,7 @@ main() {
     fi
 
     if [[ -z "$INSTALL_METHOD" ]]; then
-        INSTALL_METHOD="npm"
+        INSTALL_METHOD="git"
     fi
 
     if [[ "$INSTALL_METHOD" != "npm" && "$INSTALL_METHOD" != "git" ]]; then
